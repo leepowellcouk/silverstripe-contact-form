@@ -62,6 +62,15 @@ class ContactForm extends Object {
 
 
 
+
+  /**
+   * @var string The path to custom validators javascript file
+   */
+  protected static $custom_validators_js_path = null;
+
+
+
+
 	/**
 	 * @var boolean An instance level setting to determine whether to use BootstrapForm if available
 	 */
@@ -178,13 +187,6 @@ class ContactForm extends Object {
 	 * @var string The intro text to put in the email before the form data
 	 */
 	protected $emailIntroText = "";
-
-
-
-  /**
-   * @var string The path to custom validators javascript file
-   */
-  protected $custom_validators_js_path = null;
 
 
 
