@@ -181,7 +181,10 @@ class ContactForm extends Object {
 
 
 
-  protected $custom_validators_js = null;
+  /**
+   * @var string The path to custom validators javascript file
+   */
+  protected $custom_validators_js_path = null;
 
 
 
@@ -217,6 +220,18 @@ class ContactForm extends Object {
 	public static function set_jquery_validation($bool = true) {
 		self::$jquery_validation = $bool;
 	}
+
+
+
+
+  /**
+   * Sets the path to custom validators javascript
+   *
+   * @param string
+   */
+  public static function set_custom_validators_js_path($path) {
+    self::$custom_validators_js_path = $path;
+  }
 
 
 
@@ -906,6 +921,9 @@ class ContactForm extends Object {
 					Requirements::javascript(THIRDPARTY_DIR."/jquery/jquery.js");
 				}
 				Requirements::javascript("contact_form/javascript/validation.js");
+        if ($this->custom_validators_js_path !== null) {
+          Requirements::javascript($this->custom_validators_js_path);
+        }
 				Requirements::customScript($this->getValidationJS());
 
 			}
