@@ -924,7 +924,7 @@ class ContactForm extends Object {
 				}
 				Requirements::javascript("contact_form/javascript/validation.js");
         if (self::$custom_validators_js_path !== null) {
-          Requirements::javascript($this->custom_validators_js_path);
+          Requirements::javascript(self::$custom_validators_js_path);
         }
 				Requirements::customScript($this->getValidationJS());
 
