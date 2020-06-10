@@ -292,7 +292,7 @@ class ContactForm extends SS_Object {
 		$spam = self::$default_spam_protection ? self::$default_spam_protection : array();
 		$this->setSpamProtection($spam);
 
-		$this->form = Object::create($formClass,
+		$this->form = SS_Object::create($formClass,
 			Controller::curr(),
 			$name,
 			FieldList::create(),
@@ -472,7 +472,7 @@ class ContactForm extends SS_Object {
 	 */
 	public function addFromString($str) {
 		$parts = explode("//", $str);
-		if(sizeof($parts) != 2) continue;
+		if(sizeof($parts) != 2) return $this;
 		list($label, $type) = $parts;
 		$required = (substr($label, -1) == "*");
 		$name = self::create_name_from_label($label);
@@ -481,10 +481,10 @@ class ContactForm extends SS_Object {
 		}
 		if(is_subclass_of($type, "FormField")) {
 			if($required) {
-				$this->addRequiredField(Object::create($type, $name, substr_replace($label ,"",-1)));
+				$this->addRequiredField(SS_Object::create($type, $name, substr_replace($label ,"",-1)));
 			}
 			else {
-				$this->addField(Object::create($type, $name, $label));
+				$this->addField(SS_Object::create($type, $name, $label));
 			}
 		}
 
@@ -504,7 +504,7 @@ class ContactForm extends SS_Object {
 	public function setUseBootstrap($bool) {
 		$newClass = $bool ? "BootstrapForm" : "Form";
 		if($this->form->class != $newClass) {
-			$form = Object::create($newClass,
+			$form = SS_Object::create($newClass,
 				Controller::curr(),
 				$this->form->getName(),
 				$this->form->getFields(),
