@@ -1,4 +1,4 @@
 <?php
 
-Object::add_extension('Page_Controller','ContactFormControls');
+SS_Object::add_extension('Page_Controller','ContactFormControls');
 
