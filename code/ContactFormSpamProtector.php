@@ -10,18 +10,18 @@
  * @author Aaron Carlino <aaron@bluehousegroup.com>
  * @package ContactForm
  */
-abstract class ContactFormSpamProtector extends Object {
+abstract class ContactFormSpamProtector extends SS_Object {
 
 
-	
+
 	/**
 	 * @var boolean If true, log failed spam questions to the database
 	 */
 	protected static $log_spam_failures = true;
 
 
-	
-	
+
+
 	/**
 	 * @var int The number of times a spammer can fail before the form should no longer be rendered
 	 *			A value of 0 means there is no limit.
@@ -40,7 +40,7 @@ abstract class ContactFormSpamProtector extends Object {
 	}
 
 
-	
+
 	/**
 	 * Sets the number of tolerable spam failures before the form stops being rendered
 	 *
@@ -88,7 +88,7 @@ abstract class ContactFormSpamProtector extends Object {
 	/**
 	 * Gets the message to return to the form when the spam question is failed
 	 *
-	 * @return string	
+	 * @return string
 	 */
 	public function getMessage() {  }
 
@@ -105,14 +105,14 @@ abstract class ContactFormSpamProtector extends Object {
 
 
 
-	
+
 	/**
 	 * Creates a failed spam attempt object witht the user's info
 	 *
 	 * @param SS_HTTPRequest
 	 * @return ContactFormSpamAttempt
 	 */
-	public function createSpamAttempt(SS_HTTPRequest $r) {		
+	public function createSpamAttempt(SS_HTTPRequest $r) {
 		$spam = ContactFormSpamAttempt::create(array(
 			'IPAddress' => $r->getIP(),
 			'URL' => $r->getURL(),
@@ -122,8 +122,8 @@ abstract class ContactFormSpamProtector extends Object {
 	}
 
 
-	
-	
+
+
 	/**
 	 * Logs a spam attempt to the database
 	 *

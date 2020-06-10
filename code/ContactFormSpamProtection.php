@@ -1,7 +1,7 @@
 <?php
 
 
-class ContactFormSpamProtection extends Object {
+class ContactFormSpamProtection extends SS_Object {
 
 
 
@@ -37,7 +37,7 @@ class ContactFormSpamProtection extends Object {
 
 	public function add(ContactFormSpamProtector $spam) {
 		$spam->setContainer($this);
-		$this->components->push($spam);		
+		$this->components->push($spam);
 		return $this;
 	}
 
@@ -50,7 +50,7 @@ class ContactFormSpamProtection extends Object {
 
 
 	public function setProxy(ContactForm $f) {
-		$this->proxy = $f;		
+		$this->proxy = $f;
 		return $this;
 	}
 
